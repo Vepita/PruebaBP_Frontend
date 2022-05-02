@@ -1,0 +1,95 @@
+<div>
+  <div class="alert alert-danger" role="alert" *ngIf="showError">
+    {{infoMessage}}
+  </div>
+  <br />
+  <br />
+  <form class="form-horizontal">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="userName">Numero cuenta:</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="cuenta.numeroCuenta" type="text" class="form-control" id="userName" name="userName"
+          autofocus>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" class="btn btn-success" (click)="onBuscarCuenta()">
+          <span class="fa fa-floppy-o"></span>
+          <span></span> Buscar</button>
+        <button type="button" class="btn btn-info" (click)="onCrearNuevoCuenta()">
+          <span class="fa fa-times"></span>
+          <span></span> Nuevo</button>
+      </div>
+    </div>
+
+    <div *ngIf="muestraRegistrarCuenta">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Cliente:</label>
+        <div class="col-sm-6">
+          <select [(ngModel)]="cuenta.cliente"  class="form-control"
+            name="tipoProducto">
+            <option *ngFor="let val of clientes" [ngValue]="val">{{val.nombre}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Número de cuenta:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cuenta.numeroCuenta" type="text" class="form-control" id="nombre" name="nombre" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Tipo cuenta:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cuenta.tipoCuenta" type="text" class="form-control" id="genero" name="genero" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Saldo inicial:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cuenta.saldoInicial" type="text" class="form-control" id="edad" name="edad" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Estado:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cuenta.estado" type="text" class="form-control" id="identificacion" name="identificacion"
+            autofocus>
+        </div>
+      </div>
+      <div class="form-group" align="center">
+        <button type="button" class="btn btn-success" (click)="onGuardarCuenta()">
+          <span class="fa fa-times"></span>
+          <span></span> Guardar</button>
+      </div>
+    </div>
+
+    <div clas="col-12 col-sm-12 col-lg-12 table-responsive">
+      <table id="tablaProductos" class="table table-hover table-striped t-notifica tab-respon table-content-centered">
+        <thead>
+          <tr>
+            <th>Número de cuenta</th>
+            <th>Tipo cuenta</th>
+            <th>Saldo inicial</th>
+            <th>Estado</th>
+            <th>Cliente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cuenta of cuentas">
+            <td>{{cuenta?.numeroCuenta}}</td>
+            <td>{{cuenta?.tipoCuenta}}</td>
+            <td>{{cuenta?.saldoInicial}}</td>
+            <td>{{cuenta?.estado}}</td>
+            <td>{{cuenta?.cliente?.nombre}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </form>
+</div>

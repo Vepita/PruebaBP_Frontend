@@ -1,0 +1,128 @@
+<div>
+  <div class="alert alert-danger" role="alert" *ngIf="showError">
+    {{infoMessage}}
+  </div>
+  <br />
+  <br />
+  <form class="form-horizontal">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="userName">Identificación:</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="cliente.identificacion" type="text" class="form-control" id="userName" name="userName"
+          autofocus>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" class="btn btn-success" (click)="onBuscarCliente()">
+          <span class="fa fa-floppy-o"></span>
+          <span></span> Buscar</button>
+        <button type="button" class="btn btn-info" (click)="onCrearNuevoCliente()">
+          <span class="fa fa-times"></span>
+          <span></span> Nuevo</button>
+      </div>
+    </div>
+
+    <div *ngIf="muestraRegistrarCliente">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Nombre:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cliente.nombre" type="text" class="form-control" id="nombre" name="nombre" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Genero:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cliente.genero" type="text" class="form-control" id="genero" name="genero" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Edad:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cliente.edad" type="text" class="form-control" id="edad" name="edad" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Identificacion:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cliente.identificacion" type="text" class="form-control" id="identificacion"
+            name="identificacion" autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Direccion:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cliente.direccion" type="text" class="form-control" id="direccion" name="direccion"
+            autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Telefono:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cliente.telefono" type="text" class="form-control" id="telefono" name="telefono"
+            autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Cliente ID:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cliente.clienteId" type="text" class="form-control" id="clienteId" name="clienteId"
+            autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Contraseña:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cliente.contrasenia" type="text" class="form-control" id="contrasenia" name="contrasenia"
+            autofocus>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Estado:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="cliente.estado" type="text" class="form-control" id="estado" name="estado" autofocus>
+        </div>
+      </div>
+      <div class="form-group" align="center">
+        <button type="button" class="btn btn-success" (click)="onGuardarCliente()">
+          <span class="fa fa-times"></span>
+          <span></span> Guardar</button>
+      </div>
+    </div>
+
+    <div clas="col-12 col-sm-12 col-lg-12 table-responsive">
+      <table id="tablaProductos" class="table table-hover table-striped t-notifica tab-respon table-content-centered">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Genero</th>
+            <th>Edad</th>
+            <th>Identificacion</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Cliente ID</th>
+            <th>Contrasenia</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes">
+            <td>{{cliente?.nombre}}</td>
+            <td>{{cliente?.genero}}</td>
+            <td>{{cliente?.edad}}</td>
+            <td>{{cliente?.identificacion}}</td>
+            <td>{{cliente?.direccion}}</td>
+            <td>{{cliente?.telefono}}</td>
+            <td>{{cliente?.clienteId}}</td>
+            <td>{{cliente?.contrasenia}}</td>
+            <td>{{cliente?.estado}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </form>
+</div>

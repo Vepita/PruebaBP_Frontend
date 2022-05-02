@@ -1,0 +1,81 @@
+<div>
+  <div class="alert alert-danger" role="alert" *ngIf="showError">
+    {{infoMessage}}
+  </div>
+  <br />
+  <br />
+  <form class="form-horizontal">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="userName">Numero cuenta:</label>
+      <div class="col-sm-6">
+        <input [(ngModel)]="movimiento.cuenta" type="text" class="form-control" id="userName" name="userName" autofocus>
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="button" class="btn btn-info" (click)="onCrearNuevoMovimiento()">
+          <span class="fa fa-times"></span>
+          <span></span> Nuevo</button>
+      </div>
+    </div>
+
+    <div *ngIf="muestraRegistrarMovimiento">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Cuenta:</label>
+        <div class="col-sm-6">
+          <select [(ngModel)]="movimiento.cuenta" class="form-control" name="tipoProducto">
+            <option *ngFor="let val of cuentas" [ngValue]="val">{{val.numeroCuenta}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Tipo movimiento:</label>
+        <div class="col-sm-6">
+          <select [(ngModel)]="movimiento.tipoMovimiento" class="form-control" name="tipoMovimiento">
+            <option *ngFor="let name of enumkeys" [ngValue]="name">{{tiposMovimiento[name]}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="userName">Valor:</label>
+        <div class="col-sm-6">
+          <input [(ngModel)]="movimiento.valor" type="text" class="form-control" id="valor" name="valor" autofocus>
+        </div>
+      </div>
+      <div class="form-group" align="center">
+        <button type="button" class="btn btn-success" (click)="onGuardarMovimiento()">
+          <span class="fa fa-times"></span>
+          <span></span> Guardar</button>
+      </div>
+    </div>
+
+    <div clas="col-12 col-sm-12 col-lg-12 table-responsive">
+      <table id="tablaProductos" class="table table-hover table-striped t-notifica tab-respon table-content-centered">
+        <thead>
+          <tr>
+            <th>Número de cuenta</th>
+            <th>Fecha</th>
+            <th>Saldo inicial</th>
+            <th>Tipo movimiento</th>
+            <th>Valor</th>
+            <th>Saldo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movimiento of movimientos">
+            <td>{{movimiento?.cuenta?.numeroCuenta}}</td>
+            <td>{{movimiento?.fecha | date: 'dd/MM/yyyy'}}</td>
+            <td>{{movimiento?.cuenta?.saldoInicial}}</td>
+            <td>{{movimiento?.tipoMovimiento}}</td>
+            <td>{{movimiento?.valor}}</td>
+            <td>{{movimiento?.saldo}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </form>
+</div>
