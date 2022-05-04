@@ -30,7 +30,7 @@ export class CuentasService {
 
   guardarCuenta(cuenta: Cuenta): Observable<RestResponse> {
     let options = new FrontAppRequestOptions();
-    return this.http.put(this.commentsUrl + 'cuenta/guardarCuenta', cuenta, options).map(res => {
+    return this.http.post(this.commentsUrl + 'cuenta/guardarCuenta', cuenta, options).map(res => {
       return res.json();
     });
   }

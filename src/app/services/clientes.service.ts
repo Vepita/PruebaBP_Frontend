@@ -30,7 +30,7 @@ export class ClientesService {
 
   guardarCliente(cliente: Cliente): Observable<RestResponse> {
     let options = new FrontAppRequestOptions();
-    return this.http.put(environment.baseUrlPath + 'cliente/guardarCliente', cliente, options).map(res => {
+    return this.http.post(environment.baseUrlPath + 'cliente/guardarCliente', cliente, options).map(res => {
       return res.json();
     });
   }
